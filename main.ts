@@ -98,7 +98,7 @@ initAdversary()
 initBall()
 info.setScore(0)
 info.player2.setScore(0)
-info.startCountdown(10)
+info.startCountdown(60)
 game.onUpdate(function () {
     if (!(twoPlayer)) {
         if (projectile.x > scene.screenWidth() / 2) {
