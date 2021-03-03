@@ -1,0 +1,10 @@
+{
+    "image1": "hwQEABAAAAAREREREREREREREREREREREREREREREREREREREREREQ==",
+    "image2": "hwQEABAAAAAREREREREREREREREREREREREREREREREREREREREREQ==",
+    "image3": "hwQEAAQAAAAREQAAEREAABERAAAREQAA",
+    "*": {
+        "mimeType": "image/x-mkcd-f4",
+        "dataEncoding": "base64",
+        "namespace": "myImages"
+    }
+}
