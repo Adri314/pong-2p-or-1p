@@ -1,5 +1,6 @@
 {
     "name": "Pong 2P or 1P",
+    "version": "0.0.1",
     "description": "",
     "dependencies": {
         "device": "*",
