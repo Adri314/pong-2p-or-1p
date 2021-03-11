@@ -23,10 +23,10 @@ function initPaddle () {
 }
 info.onCountdownEnd(function () {
     music.powerUp.play()
-    if (info.score() > info.player2.score()) {
-        game.splash("Player 1 wins!", "Score: " + info.score())
-    } else if (info.score() < info.player2.score()) {
-        game.splash("Player 2 wins!", "Score: " + info.player2.score())
+    if (score1 > score2) {
+        game.splash("Player 1 wins!", "Score: " + score1)
+    } else if (score1 < score2) {
+        game.splash("Player 2 wins!", "Score: " + score2)
     } else {
         game.splash("Draw")
     }
@@ -86,6 +86,8 @@ let adversary: Sprite = null
 let picture: Image = null
 let projectile: Sprite = null
 let paddle: Sprite = null
+let score2 = 0
+let score1 = 0
 let twoPlayer = false
 game.splash("Pong", "by me")
 twoPlayer = false
@@ -96,9 +98,15 @@ initBackground()
 initPaddle()
 initAdversary()
 initBall()
-info.setScore(0)
-info.player2.setScore(0)
 info.startCountdown(60)
+score1 = 0
+score2 = 0
+let showScore1 = textsprite.create(convertToText(score1))
+showScore1.setMaxFontHeight(16)
+showScore1.setPosition(40, 16)
+let showScore2 = textsprite.create(convertToText(score2))
+showScore2.setMaxFontHeight(16)
+showScore2.setPosition(120, 16)
 game.onUpdate(function () {
     if (!(twoPlayer)) {
         if (projectile.x > scene.screenWidth() / 2) {
@@ -112,12 +120,14 @@ game.onUpdate(function () {
 })
 game.onUpdate(function () {
     if (projectile.x > adversary.right) {
-        info.changeScoreBy(1)
+        score1 += 1
+        showScore1.setText(convertToText(score1))
         music.jumpUp.play()
         projectile.setPosition(paddle.x + 3, paddle.y)
         projectile.setVelocity(randint(50, 75), randint(25, 50))
     } else if (projectile.x < paddle.left) {
-        info.player2.changeScoreBy(1)
+        score2 += 1
+        showScore2.setText(convertToText(score2))
         music.jumpDown.play()
         projectile.setPosition(adversary.x - 3, adversary.y)
         projectile.setVelocity(randint(-75, -50), randint(25, 50))
